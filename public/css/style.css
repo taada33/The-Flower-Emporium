@@ -1,0 +1,44 @@
+.accountSection{
+    background-color: rgb(244, 225, 213);
+    float: right;
+    width: 100%;
+}
+.accountSection li {
+    float: right;
+    list-style: none;
+    display: block;
+    /* text-align: center; */
+    margin-right: 20px;
+    padding: 16px;
+}
+header{
+    background-color: rgb(244, 225, 213);
+    width: 100%;
+}
+
+.logo{
+    height: 200px;
+}
+
+img{
+    width:200px;
+}
+
+
+li{
+    font-family: 'Rubik', sans-serif;
+    float: left;
+    list-style: none;
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+}
+
+li a{
+    color: black;
+}
+
+.hero {
+    width: 100%;
+}
+
