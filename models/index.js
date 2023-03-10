@@ -11,3 +11,12 @@ Products.belongsTo(Catagories, {
     foreignkey: 'catagory_id'
 });
 
+ShoppingCart.hasMany(Products, {
+    foreignkey: 'product_id'
+});
+
+ShoppingCart.hasOne(User, {
+    foreignkey: 'user_id'
+});
+
+module.exports = { User, Catagories, Products, ShoppingCart };
