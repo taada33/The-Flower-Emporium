@@ -1,39 +1,44 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Products extends Model{}
+class Products extends Model { }
 
 Products.init(
     {
-        id:{
+        id: {
             type: DataTypes.INTEGER.STRING,
             allowNull: false,
             primaryKey: true,
         },
 
-        name:{
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
 
-        description:{
+        description: {
             type: DataTypes.STRING,
             allowNull: false,
         },
 
-        stock:{
+        fileName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
+        stock: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
 
-        price:{
+        price: {
             type: DataTypes.DECIMAL,
             allowNull: false,
         },
 
-        catagory_id:{
+        catagory_id: {
             type: DataTypes.INTEGER,
-            references:{
+            references: {
                 model: 'catagories',
                 key: 'id'
             },
