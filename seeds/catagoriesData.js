@@ -1,7 +1,23 @@
-const{Catagories} = require('../models');
+const { Catagories } = require('../models');
 
 const catagoriesData = [
     {
-        name: 'Bouquets'
-    }
-]
+        name: 'Flowers',
+    },
+
+    {
+        name: 'Plants',
+    },
+
+    {
+        name: 'Planters',
+    },
+
+    {
+        name: 'Home Decor',
+    },
+];
+
+const seedCatagories = () => Catagories.bulkCreate(catagoriesData);
+
+module.exports = seedCatagories;
