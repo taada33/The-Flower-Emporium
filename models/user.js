@@ -1,69 +1,47 @@
-const bcrypt = require("bcrypt");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
-module.exports = function(sequelize, DataTypes) {
-	
-  
-  
-  const User = sequelize.define(
-		"User",
-		{
-			firstName: {
-				type: DataTypes.STRING,
-				allowNull: false,
-				validate: {}
-			},
-			lastName: {
-				type: DataTypes.STRING,
-				allowNull: false,
-				validate: {}
-			},
-			email: {
-				type: DataTypes.STRING,
-				allowNull: false,
-				unique: true,
-				validate: {
-					isEmail: true
-				}
-			},
-			pwd: {
-				type: DataTypes.STRING,
-				allowNull: false,
-				validate: {
-					len: [5]
-				}
-			},
-			isAdmin: {
-				type: DataTypes.BOOLEAN,
-				defaultValue: false
-			}
-		},
-		{
-			classMethods: {
-				associate: function(models) {
-					User.hasMany(models.Cart);
-					User.hasMany(models.Order);
-				}
-			},
-			instanceMethods: {
-				validPassword: function(pwd) {
-					return bcrypt.compareSync(pwd, this.pwd);
-				}
-			},
-			hooks: {
-				beforeCreate: function(user, options, cb) {
-					user.pwd = bcrypt.hashSync(
-						user.pwd,
-						bcrypt.genSaltSync(10),
-						null
-					);
-					cb(null, options);
-				}
-			}
-		},
+class User extends Model { }
+
+User.init(
     {
-      //timestamps: false
-    }
-  );
+        id: {
+            type: DataTypes.INTEGER.STRING,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+        },
 
-	return User;
-};
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: true,
+            },
+        },
+
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [8],
+            },
+        },
+    },
+
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'user',
+    }
+);
+
+module.exports = User;
