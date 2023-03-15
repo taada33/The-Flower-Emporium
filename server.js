@@ -2,6 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
+const hbs = exphbs.create({})
 
 const app = express();
 
@@ -17,17 +18,22 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Set up handlebars as the view engine
-// app.engine('handlebars', exphbs.engine({defaultLayout: 'main'}));
-// app.set('view engine', 'handlebars');
+//Set up handlebars as the view engine
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
-// app.get('/', (req, res) => {
-//     res.render('main', {
-//     });
-// });
+
+
+
+app.get('/', (req, res) => {
+    res.render('home', {
+    });
+});
+
+
 app.get('/login', (req, res, next) => {
   try {
-    res.render('login', { title: 'Login' });
+    res.render('login');
   } catch (error) {
     next(error);
   }
