@@ -1,4 +1,6 @@
 
-CREATE DATABASE IF NOT EXISTS ecommerce_db;
+DROP DATABASE IF EXISTS emporium_db;
 
-USE ecommerce_db;
+CREATE DATABASE emporium_db;
+
+USE emporium_db;
