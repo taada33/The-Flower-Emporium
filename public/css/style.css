@@ -14,14 +14,17 @@
 header{
     background-color: rgb(244, 225, 213);
     width: 100%;
+    height: 60px;
 }
 
 .logo{
+
     height: 200px;
 }
 
 img{
     width:200px;
+    margin-top: 10px;
 }
 
 
@@ -37,8 +40,251 @@ li{
 li a{
     color: black;
 }
-
-.hero {
+.header-image-container {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+  }
+  
+  .header-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-}
+    height: 100%;
+    object-fit: cover;
+    animation: slide 20s infinite;
+    opacity: 0;
+  }
+  
+  .header-image-container img:nth-child(1) {
+    opacity: 1;
+    animation-delay: 0s;
+  }
+  
+  .header-image-container img:nth-child(2) {
+    animation-delay: 5s;
+  }
+  
+  .header-image-container img:nth-child(3) {
+    animation-delay: 10s;
+  }
+  
+  .header-image-container img:nth-child(4) {
+    animation-delay: 15s;
+  }
+  
+  @keyframes slide {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 1;
+    }
+    30% {
+      opacity: 0;
+    }
+  }
 
+  navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 1;
+  }
+
+  .product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #f1f1f1;
+  }
+  .product i {
+    font-size: 2rem;
+    color: #333;
+  }
+
+
+/* //login style  */
+
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:rgb(244, 225, 213);
+
+  }
+  
+  form {
+    margin: 0 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px rgba(75, 173, 30, 0.1);
+    text-align: center;
+    width: 400px;
+  }
+  
+  form h2 {
+    margin-bottom: 20px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  form input {
+    display: block;
+    width: 100%;    
+    padding: 0 0  20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #e9e0e0;
+
+  }
+  
+  button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 40px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+
+  /* Footer section */
+
+  .footer-section {
+    background-color: rgb(244, 225, 213);
+    padding: 50px 0;
+  
+  }
+  
+  .footer-section h4 {
+    margin-bottom: 20px;
+    color: blue;
+  }
+  
+  .footer-section p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .social-icons li {
+    margin-right: 20px;
+  }
+  
+  .social-icons a {
+    display: block;
+    font-size: 20px;
+    color: #333;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .social-icons a:hover {
+    color: #4CAF50;
+  }
+  
+  .social-icons li a  {
+    color: #312ecc; 
+    font-size: 24px;
+  }
+
+  .social-icons li a[href*="youtube.com"] i {
+    color: red;
+  }
+
+  .tweets {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .tweets h5 {
+    margin-bottom: 10px;
+  }
+  
+  .tweets p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+
+  .grid-container {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: 400px 400px 400px; /*Make the grid smaller than the container*/
+    gap: 30px;
+    background-color: #dadca7;
+    padding: 10px;
+    height: 600px;
+  }
+  
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+
+  .chat-box {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #ccc;
+    height: 300px;
+    overflow-y: scroll;
+    text-align: center;
+    font-family: monospace;
+    color: #007bff;
+  }
+  
+  .chat-box p {
+    margin: 5px 0;
+  }
+  
+  .chat-box form {
+    margin-top: 10px;
+  }
+  
+  .chat-box input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .chat-box button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .chat-box button:hover {
+    background-color: #0069d9;
+  }
