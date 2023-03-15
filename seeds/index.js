@@ -1,15 +1,15 @@
 const sequelize = require('../config/connection');
-const seedGalleries = require('./galleryInfo');
-const seedProducts = require('./productInfo');
+const seedCatagories = require('./catagoriesData');
+const seedProducts = require('./productsData');
 
-const seedAll = async () => {
-  await sequelize.sync({ force: true });
+const seedAll = async() => {
+    await sequelize.sync({ force: true });
 
-  await seedProducts();
-
-  await seedGalleries();
-
-  process.exit(0);
+    await seedCatagories();
+  
+    await seedProducts();
+  
+    process.exit(0);
 };
 
 seedAll();
