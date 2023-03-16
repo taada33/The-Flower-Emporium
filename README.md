@@ -4,6 +4,12 @@ A simple ecommerce website that allows users to buy flowers online.
 
 
 
+## Demo 
+
+
+
+
+
 ## Installation
 ***
 
@@ -47,7 +53,7 @@ Product reviews and ratings.
 
 ***
 
-**Back-end :
+**Back-end:**
 
 Node.js
 
@@ -59,7 +65,7 @@ MySql
 
 
 
-**Front-end:
+**Front-end:**
 
 HTML
 
@@ -67,10 +73,10 @@ CSS
 
 Javascript
 
-**Contributing
+**Contributing**
 
 We welcome contributions from anyone who is interested in improving this project. If you would like to contribute, please fork the repository and create a new branch for your changes. After making your changes, submit a pull request and we will review your changes.
 
-**Credits
+**Credits**
 
 This project was created by Group Two .
