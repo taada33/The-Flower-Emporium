@@ -3,15 +3,6 @@
 A simple ecommerce website that allows users to buy flowers online.
 
 
-## Prerequisites 
-
-***
-
-Node.js and npm installed on your local machine.
-
-
-Mysql2 installed on your local machine.
-
 
 ## Installation
 ***
@@ -55,17 +46,23 @@ Product reviews and ratings.
 ## Technologies Used
 
 ***
+
+**Back-end :
+
+Node.js
+
 Express.js
 
-Mysql2
+Sequelize-ORM
 
-Handlebars.js
+MySql
 
-Bootstrap
+
+
+**Front-end:
 
 HTML
 
 CSS
 
-JavaScript
-
+Javascript
