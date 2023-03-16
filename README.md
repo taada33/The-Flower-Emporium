@@ -52,27 +52,33 @@ Product reviews and ratings.
 
 ## Technologies Used
 
+
+
 ***
 
 **Back-end:**
 
-Node.js
+Node.js ![Nodejs](https://img.shields.io/badge/-Nodejs-black?style=flat-square&logo=Node.js)
 
 Express.js
 
 Sequelize-ORM
 
-MySql
+MySql  ![MySQL](https://img.shields.io/badge/-MySQL-black?style=flat-square&logo=mysql)
+
+Heroku ![Heroku](https://img.shields.io/badge/-Heroku-430098?style=flat-square&logo=heroku)
 
 
 
 **Front-end:**
 
-HTML
+HTML  ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 
-CSS
+CSS   ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3)
 
-Javascript
+Javascript  ![JavaScript](https://img.shields.io/badge/-JavaScript-black?style=flat-square&logo=javascript)
+
+Github ![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github)
 
 **Contributing**
 
