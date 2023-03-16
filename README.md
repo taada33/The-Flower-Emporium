@@ -66,3 +66,11 @@ HTML
 CSS
 
 Javascript
+
+**Contributing
+
+We welcome contributions from anyone who is interested in improving this project. If you would like to contribute, please fork the repository and create a new branch for your changes. After making your changes, submit a pull request and we will review your changes.
+
+**Credits
+
+This project was created by Group Two .
