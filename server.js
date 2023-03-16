@@ -2,9 +2,12 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 const hbs = exphbs.create({})
 
 const app = express();
+
+
 
 // Set up session middleware
 app.use(session({
@@ -21,8 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Set up handlebars as the view engine
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-
-
 
 
 app.get('/', (req, res) => {

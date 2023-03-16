@@ -1,6 +1,6 @@
 const { Products } = require('../models');
 
-const productsdata = [
+const productsData = [
     //Flowrs
     {
         name: 'Designer choice Hand-Tied Bouquet',
@@ -330,6 +330,6 @@ const productsdata = [
     },
 ];
 
-const seedProducts = () => Products.bulkCreate(productsdata);
+const seedProducts = () => Products.bulkCreate(productsData);
 
 module.exports = seedProducts;
