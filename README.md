@@ -1,11 +1,12 @@
 # Project Name : The-Flower-Emporium
 
-A simple ecommerce website that allows users to buy flowers online.
+The Flower Emporium is a simple ecommerce website that allows users to buy flowers online. It has features such as user authentication, shopping cart functionality, checkout process, search functionality, and product reviews. The website is built using Node.js, Express.js, Sequelize-ORM, MySQL, HTML, CSS, and  Javascript .
 
 
 
 ## Demo 
 
+![image](https://user-images.githubusercontent.com/118404373/225479359-31e26438-fe39-4f8a-bedc-439a09af798b.png)
 
 
 
