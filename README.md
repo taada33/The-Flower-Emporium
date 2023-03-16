@@ -4,7 +4,10 @@ A simple ecommerce website that allows users to buy flowers online.
 
 
 ## Prerequisites
+
 Node.js and npm installed on your local machine.
+
+
 Mysql2 installed on your local machine.
 
 
