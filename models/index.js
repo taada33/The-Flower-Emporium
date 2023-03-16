@@ -30,3 +30,5 @@ module.exports = {
   Cart,
   ProductCart,
 };
+
+module.exports = { User, Catagories, Products, ShoppingCart };
