@@ -3,7 +3,9 @@
 A simple ecommerce website that allows users to buy flowers online.
 
 
-## Prerequisites
+## Prerequisites 
+
+***
 
 Node.js and npm installed on your local machine.
 
@@ -12,6 +14,7 @@ Mysql2 installed on your local machine.
 
 
 ## Installation
+***
 
 Clone the repo
 Copy code
@@ -24,7 +27,7 @@ npm install
 
 ## Usage
 
-
+***
 Start the server
 
 npm start
@@ -37,7 +40,7 @@ http://localhost:3000/
 
 ## Features
 
-
+***
 User authentication (sign up, login, logout).
 
 Shopping cart functionality (add to cart, remove from cart, update cart).
