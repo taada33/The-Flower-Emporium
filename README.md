@@ -14,9 +14,9 @@ The Flower Emporium is a simple ecommerce website that allows users to buy flowe
 ## Installation
 ***
 
-Clone the repo
-Copy code
-git clone 
+Clone the repo to Local Machine 
+
+git clone  https://github.com/taada33/The-Flower-Emporium
 
 
 ## Install NPM packages
