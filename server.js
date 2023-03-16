@@ -2,7 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
-const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
+// const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 const hbs = exphbs.create({})
 
 const app = express();
@@ -86,16 +86,16 @@ app.use((err, req, res, next) => {
 });
 
 
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+// const server = require('http').createServer(app);
+// const io = require('socket.io')(server);
 
-io.on('connection', (socket) => {
-  console.log('A user connected');
+// io.on('connection', (socket) => {
+//   console.log('A user connected');
 
-  socket.on('disconnect', () => {
-    console.log('A user disconnected');
-  });
-});
+//   socket.on('disconnect', () => {
+//     console.log('A user disconnected');
+//   });
+// });
 
 
 app.listen(3000, () => {
