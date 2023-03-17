@@ -6,10 +6,9 @@ class Products extends Model { }
 Products.init(
     {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.STRING,
             allowNull: false,
             primaryKey: true,
-            autoIncrement:true,
         },
 
         name: {
@@ -22,7 +21,7 @@ Products.init(
             allowNull: false,
         },
 
-        filename: {
+        fileName: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -30,7 +29,6 @@ Products.init(
         stock: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            defaultValue:10,
         },
 
         price: {
@@ -38,10 +36,10 @@ Products.init(
             allowNull: false,
         },
 
-        category_id: {
+        catagory_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'categories',
+                model: 'catagories',
                 key: 'id'
             },
         },
@@ -50,7 +48,6 @@ Products.init(
     {
         sequelize,
         freezeTableName: true,
-        timestamps:false,
         underscored: true,
         modelName: 'products',
     }

@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection')
-const { Category, Product } = require('../../models');
+const { Categories, Products } = require('../../models');
 
 // The `/api/categories` endpoint
 
 router.get('/', async (req, res) => {
   try {
-    const categoryData = await Category.findAll({
-      include: [{ model: Product }],
+    const categoryData = await Categories.findAll({
+      include: [{ model: Products }],
     });
     res.status(200).json(categoryData);
   } catch (err) {
@@ -19,8 +19,8 @@ router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products -- ? 
   try {
-    const categoryData = await Category.findByPk(req.params.id, {
-      include: [{ model: Product }],
+    const categoryData = await Categories.findByPk(req.params.id, {
+      include: [{ model: Products }],
     });
 
     if (!categoryData) {
@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   // create a new category -- ?
   try {
-    const categoryData = await Category.create({
+    const categoryData = await Categories.create({
       category_name: req.body.category_name,
     });
     res.status(200).json(categoryData);
@@ -51,7 +51,7 @@ router.put('/:id', async (req, res) => {
   try {
     // First, we find a category using their primary key (provided by params)
     // const categoryData = await Category.findByPk(req.params.id);
-    const categoryData = await Category.update(req.body, {
+    const categoryData = await Categories.update(req.body, {
       where: {
         id: req.params.id
       }
@@ -72,7 +72,7 @@ router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value  --? 
 
   try {
-    const categoryData = await Category.destroy({
+    const categoryData = await Categories.destroy({
       where: {
         id: req.params.id
       }

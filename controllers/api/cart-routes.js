@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection')
-const { productCart, product, user,} = require('../../models');
+const { Categories, Products, User, ProductCart} = require('../../models');
 
 // The `/api/categories` endpoint
 
 router.get('/', async (req, res) => {
   try {
     const cartData = await cart.findAll({
-      include: [{ model: product, through: productCart }, { model: user, through: productCart }],
+      include: [{ model: Products, through: ProductCart }, { model: User, through: ProductCart }],
     });
     res.status(200).json(cartData);
   } catch (err) {
@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Products -- ? 
   try {
     const cartData = await cart.findByPk(req.params.id, {
-      include: [{ model: product, through: productCart }],
+      include: [{ model: Products, through: ProductCart }],
     });
 
     if (!cartData) {
@@ -33,6 +33,14 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// router.post('/', async(req,res) =>{
+//   try{
+//     const dbCartData = await ProductCart.bulkcreate({
+//       cartID: req.body.cart_id
+//     })
+//   }
+// })
 
 
 
@@ -47,18 +55,18 @@ router.put('/:id', withAuth, async (req, res) => {
       // find any existing cart of the user
       let cart = await productCart.findOne({ where: { id: req.session.user_id } });
       // find product already in cart 
-      let productToBeAdded = await product.findOne({
+      let productToBeAdded = await Products.findOne({
         where: { productId: productId, cartId: cart[0].id }
       })
       if (productToBeAdded) {
         // just update the quantity
         let qnt = productToBeAdded.quantity + 1;
-        Product.update({ quantity: qnt },
+        Products.update({ quantity: qnt },
           {
             where: { productId: productId, cartId: cart[0].id }
           });
       } else {
-        Product.create({
+        Products.create({
           quantity: 1,
           cartId: cart[0].id,
           productId: productId
@@ -67,7 +75,7 @@ router.put('/:id', withAuth, async (req, res) => {
     })
     
     // figure out which carts to remove by looping through all productcarts and searching the specific cart id
-    const productCartsToRemove = productCart.findAll({
+    const productCartsToRemove = ProductCart.findAll({
       where: {
         user_id: req.session.user_id
         //get a list of carts by searching user_id
@@ -75,10 +83,10 @@ router.put('/:id', withAuth, async (req, res) => {
         .map(({ id }) => id);
 
       return Promise.all([
-        productCart.destroy({ where: { id: productCartsToRemove } }),
+        ProductCart.destroy({ where: { id: productCartsToRemove } }),
       ]);
 
-      res.status(200).json(productCart)
+      res.status(200).json(ProductCart)
     }
       catch (err) {
         // console.log(err);
@@ -91,7 +99,7 @@ router.put('/:id', withAuth, async (req, res) => {
 router.delete('/:id', async (req, res) => {
 
   try {
-    const cartData = await cart.destroy({
+    const cartData = await ProductCart.destroy({
       where: {
         id: req.params.id
       }

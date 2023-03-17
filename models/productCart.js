@@ -15,16 +15,20 @@ ProductCart.init(
     product_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'product',
+        model: 'Products',
         key: 'id',
       },
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'cart',
+        model: 'User',
         key: 'id',
       },
+    },
+    quantities: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   {
@@ -32,8 +36,8 @@ ProductCart.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'product_cart',
+    modelName: 'productCart',
   }
 );
 
-module.exports = ProductTag;
+module.exports = ProductCart;

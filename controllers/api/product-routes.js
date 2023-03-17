@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Product, Category,} = require('../../models');
+const { Products, Categories, ProductCart,User} = require('../../models');
 
 // The `/api/products` endpoint
 
@@ -8,8 +8,8 @@ router.get('/', async (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   try {
-    const productData = await Product.findAll({
-      include: [{ model: Category },
+    const productData = await Products.findAll({
+      include: [{ model: Categories },
       ],
     });
     res.status(200).json(productData);
@@ -23,8 +23,8 @@ router.get('/:id', async (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
   try {
-    const productData = await Product.findByPk(req.params.id, {
-      include: [{ model: Category }, { model: Tag, through: ProductTag }
+    const productData = await Products.findByPk(req.params.id, {
+      include: [{ model: Categories }, { model: User, through: ProductCart }
       ],
     });
     
@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   // create a new product -- ?
   try {
-    const productData = await Product.create({
+    const productData = await Products.create({
       product_name: req.body.product_name,
     });
     res.status(200).json(productData);
@@ -54,7 +54,7 @@ router.put('/:id', async (req, res) => {
   // update a product by its `id` value
   try {
     // First, we find a product using their primary key (provided by params)
-    const productData = await Product.update(req.body, {
+    const productData = await Products.update(req.body, {
       where: {
         id: req.params.id
       }
@@ -74,7 +74,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   try {
-    const productData = await Product.destroy({
+    const productData = await Products.destroy({
       where: {
         id: req.params.id
       }

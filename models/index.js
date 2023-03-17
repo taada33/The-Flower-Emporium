@@ -1,34 +1,34 @@
 // import models
-const Product = require('./Product');
-const Category = require('./Category');
-const cart = require('./Cart');
+const Products = require('./Products');
+const Categories = require('./Categories');
 const ProductCart = require('./ProductCart');
-const user = require('/user')
+const User = require('./User')
 
 // Products belongsTo Category
-Product.belongsTo(Category, {
+Products.belongsTo(Categories, {
   foreignKey: 'category_id',
 });
 // Categories have many Products
-Category.hasMany(Product, {
+Categories.hasMany(Products, {
   foreignKey: 'category_id',
 
 });
-user.belongsToMany(Product,{
+
+User.belongsToMany(Products,{
   through:ProductCart,
   foreignKey:'user_id'
 })
 
-product.belongsToMany(user,{
+Products.belongsToMany(User,{
   through:ProductCart,
   foreignKey:'product_id'
 })
 
 module.exports = {
-  Product,
-  Category,
-  Cart,
+  Products,
+  Categories,
+  User,
   ProductCart,
 };
 
-module.exports = { User, Catagories, Products, ShoppingCart };
+module.exports = { User, Categories, Products, ProductCart };
