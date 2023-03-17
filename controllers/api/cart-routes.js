@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection')
+const withAuth = require('../../utils/auth');
 const { Categories, Products, User, ProductCart} = require('../../models');
 
 // The `/api/categories` endpoint
