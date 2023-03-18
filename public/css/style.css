@@ -1,3 +1,12 @@
+
+body{
+ margin: 0;
+ padding: 0;
+ background-color:rgb(244, 225, 213);
+ box-sizing: border-box;
+
+}
+
 .accountSection{
     background-color: rgb(244, 225, 213);
     float: right;
@@ -20,6 +29,47 @@ header{
 .logo{
 
     height: 200px;
+}
+
+.name-animation {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 38px;
+  margin-bottom: 30px;
+  font-family: 'Odor Mean Chey', serif;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 img{
@@ -98,33 +148,25 @@ li a{
     z-index: 1;
   }
 
-  .product {
+  /* .product {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100px;
     background-color: #f1f1f1;
-  }
-  .product i {
+  } */
+  /* .product i {
     font-size: 2rem;
     color: #333;
-  }
+  } */
 
 
 /* //login style  */
 
 
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color:rgb(244, 225, 213);
-
-  }
   
   form {
-    margin: 0 20px;
+    /* margin: 0 20px; */
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -134,7 +176,7 @@ li a{
   }
   
   form h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   form label {
@@ -164,127 +206,147 @@ li a{
     cursor: pointer;
   }
 
-
-  /* Footer section */
-
-  .footer-section {
-    background-color: rgb(244, 225, 213);
-    padding: 50px 0;
-  
-  }
-  
-  .footer-section h4 {
-    margin-bottom: 20px;
-    color: blue;
-  }
-  
-  .footer-section p {
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 30px;
-  }
-  
-  .social-icons {
+  .container {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-  }
-  
-  .social-icons li {
-    margin-right: 20px;
-  }
-  
-  .social-icons a {
-    display: block;
-    font-size: 20px;
-    color: #333;
-    transition: color 0.2s ease-in-out;
-  }
-  
-  .social-icons a:hover {
-    color: #4CAF50;
-  }
-  
-  .social-icons li a  {
-    color: #312ecc; 
-    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color:rgb(244, 225, 213);
+    background-size: cover;
+    background-size: cover;
+    width: 100%;
+
   }
 
-  .social-icons li a[href*="youtube.com"] i {
-    color: red;
+
+  .footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    background-color:rgb(244, 225, 213);
+    background-size: cover;
+    background-size: cover;
+    width: 100%;
+    border-radius: 1px;
+    animation: mymove 5s infinite;
+
   }
 
-  .tweets {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 5px;
-  }
-  
-  .tweets h5 {
-    margin-bottom: 10px;
-  }
-  
-  .tweets p {
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 20px;
+  @keyframes mymove {
+    from {background-color: rgb(239, 221, 221);}
+    to {background-color: rgb(140, 140, 225);}
   }
 
+
+  
   .grid-container {
     display: grid;
     justify-content: space-evenly;
     grid-template-columns: 400px 400px 400px; /*Make the grid smaller than the container*/
-    gap: 30px;
-    background-color: #dadca7;
+    gap: 15px;
     padding: 10px;
-    height: 600px;
+    height: 900px;
   }
   
-  .grid-container > div {
+
+
+
+  .footer-section {
+    background-color:rgb(244, 225, 213);
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0px 0px 1px rgba(222, 149, 149, 0.2); /* add a shadow to the bottom of the footer */
+    width: 100%;
+    height: 200px;
+  }
+  
+  .footer-section h4 {
+    color: #1f22da;
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .footer-section p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .social-icons {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  /* Facebook icon color */
+ul li:nth-child(1) a i {
+  color: #3b5998; /* Facebook blue */
+}
+
+/* Twitter icon color */
+ul li:nth-child(2) a i {
+  color: #1da1f2; /* Twitter blue */
+}
+
+/* Instagram icon color */
+ul li:nth-child(3) a i {
+  color: #e1306c; /* Instagram pink */
+}
+
+/* Youtube icon color */
+ul li:nth-child(4) a i {
+  color: #ff0000; /* Youtube red */
+}
+
+
+  .social-icons li:last-child {
+    margin-right: 0;
+  }
+  
+  .social-icons a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #c9c7c7;
+    color: #1111c2;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+  }
+  
+  .tweets {
+    /* styles for tweets */
+  }
+
+  /* .grid-container > div {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
     padding: 20px 0;
     font-size: 30px;
+  /* } */ 
+
+/* 
+  @media screen and (min-width: 992px) {
+    /* Add your CSS rules for desktop devices here */
+  /* } */
+  
+  /* Media query for mobile devices */
+  /* @media screen and (max-width: 991px) { */
+    /* Add your CSS rules for mobile devices here */
+  /* } */ 
+
+  @media screen and (max-width: 768px) {
+    /* styles for screens smaller than 768px */
   }
 
-  .chat-box {
-    background-color: #f2f2f2;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 5px #ccc;
-    height: 300px;
-    overflow-y: scroll;
-    text-align: center;
-    font-family: monospace;
-    color: #007bff;
-  }
-  
-  .chat-box p {
-    margin: 5px 0;
-  }
-  
-  .chat-box form {
-    margin-top: 10px;
-  }
-  
-  .chat-box input[type="text"] {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .chat-box button {
-    margin-left: 5px;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .chat-box button:hover {
-    background-color: #0069d9;
+  @media screen and (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
   }

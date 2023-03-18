@@ -1,0 +1,4 @@
+  <button onclick="addToCart('{{product.id}}')">Add to cart</button>
+  <form id="checkout-sumbit" action="/checkout" method="post" style="display:none;">
+  <input type="hidden" name="productId" value="{{product.id}}">
+  <button type="submit" id="checkout-button">Checkout</button>

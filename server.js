@@ -1,13 +1,24 @@
+const Handlebars = require('handlebars');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
+
+const productRoutes = require('./controllers/api/product-route');
+const categoryRoutes = require('./controllers/category-route');
+const stripe = require('stripe')('process.env.YOUR_KEY');
+const YOUR_DOMAIN = process.env.YOUR_HOST
+
+const { Products } = require('./models/Products');
+
+
 // const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY)
 const hbs = exphbs.create({})
 
 const app = express();
 
-
+exphbs.create({}).handlebars.registerPartial('products', '{{> products}}');
+exphbs.create({}).handlebars.registerPartial('categories', '{{> categories}}');
 
 // Set up session middleware
 app.use(session({
@@ -26,6 +37,60 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 
+app.use('/api', productRoutes);
+app.use('/api', categoryRoutes)
+
+
+
+// app.get('/api/products', function (req, res) {
+//   res.render('home', { products: products, gridContainer: true });
+// });
+app.get('/api/products', async function (req, res) {
+  try {
+    const products = await Products.findAll({
+      include: Category // Include the associated category with each product
+    });
+    const categories = await Categories.findAll();
+    res.render('home', { 
+      products: products, 
+      categories: categories,
+      gridContainer: true 
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal server error');
+  }
+});
+// Get a reference to the products.handlebars partial
+// const productsPartial = Handlebars.compile('{{> products}}');
+
+// app.get('/api/products', (req, res) => {
+//   Products.findAll().then((products) => {
+//     // Render the products partial with the product data
+//     const renderedProducts = productsPartial({ products });
+//        // Render the categories partial
+//     const renderedCategories = categoriesPartial();
+
+//     const renderedHTML = `
+//     <div class="grid-container">
+//       <h2>Products</h2>
+//       ${renderedProducts}
+//       ${renderedCategories}
+//     </div>
+//   `;
+//     // Send the rendered partial as the response
+//     res.send(renderedHTML);
+//   }).catch((err) => {
+//     console.error(err);
+//     res.status(500).send('An error occurred while fetching the products.');
+//   });
+// });
+
+// app.get('/api/categories', function (req, res) {
+//   res.render('main', {categories: categories });
+// });
+
+
 app.get('/', (req, res) => {
     res.render('home', {
     });
@@ -40,62 +105,28 @@ app.get('/login', (req, res, next) => {
   }
 });
 
-app.get('/shopping-cart', (req, res, next) => {
-  try {
-    const cart = req.session.cart || [];
-    const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    res.render('shopping-cart', { title: 'Shopping Cart', cart: cart || [], totalPrice });
-  } catch (error) {
-    next(error);
-  }
-});
-
-app.get('/products', (req, res, next) => {
-  try {
-    const products = [
+app.post('/create-checkout-session', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: [
       {
-        name: 'Product 1',
-        description: 'This is the first product',
-        price: 9.99,
-        image: 'https://example.com/product1.jpg'
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'T-shirt',
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
       },
-      {
-        name: 'Product 2',
-        description: 'This is the second product',
-        price: 19.99,
-        image: 'https://example.com/product2.jpg'
-      },
-      {
-        name: 'Product 3',
-        description: 'This is the third product',
-        price: 29.99,
-        image: 'https://example.com/product3.jpg'
-      }
-    ];
+    ],
+    mode: 'payment',
+    success_url: `${YOUR_DOMAIN}/success.html`,
+    cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+  });
 
-    res.render('products', { title: 'Products', products: products || [] });
-  } catch (error) {
-    next(error);
-  }
+  res.json({ id: session.id });
 });
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something went wrong!');
-});
-
-
-// const server = require('http').createServer(app);
-// const io = require('socket.io')(server);
-
-// io.on('connection', (socket) => {
-//   console.log('A user connected');
-
-//   socket.on('disconnect', () => {
-//     console.log('A user disconnected');
-//   });
-// });
 
 
 app.listen(3000, () => {

@@ -1,37 +1,33 @@
-const socket = io.connect('http://localhost:3000');
+// var stripe = Stripe('process.env.YOUR_KEY');
+// const button = document.getElementById('checkout-button');
 
-socket.on('connect', () => {
-  console.log('Connected to server');
-});
 
-socket.on('disconnect', () => {
-  console.log('Disconnected from server');
-});
-
-socket.on('message', (message) => {
-  const chat = document.getElementById('chat');
-  const p = document.createElement('p');
-  p.innerText = message;
-  chat.appendChild(p);
-});
-
-const form = document.createElement('form');
-const input = document.createElement('input');
-input.setAttribute('autocomplete', 'off');
-input.setAttribute('placeholder', 'Type your message');
-const button = document.createElement('button');
-button.innerText = 'Send';
-
-form.appendChild(input);
-form.appendChild(button);
-
-document.getElementById('chat').appendChild(form);
-
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const message = input.value.trim();
-  if (message) {
-    socket.emit('message', message);
-    input.value = '';
-  }
-});
+// Button.addEventListener("click", function () {
+//   fetch("/payment", {
+//     headers: {'Content-Type': 'application/json'},
+//     method: "POST",
+//     body: JSON.stringify({
+//         "product": {
+//             "name": "flower", 
+//             "amount": 100,
+//             "quantity": 1
+//         }})
+//   })
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (session) {
+//       return stripe.redirectToCheckout({ sessionId: session.id });
+//     })
+//     .then(function (result) {
+//       // If redirectToCheckout fails due to a browser or network
+//       // error, you should display the localized error message to your
+//       // customer using error.message.
+//       if (result.error) {
+//         alert(result.error.message);
+//       }
+//     })
+//     .catch(function (error) {
+//       console.error("Error:", error);
+//     });
+// });

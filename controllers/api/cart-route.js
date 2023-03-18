@@ -1,10 +1,10 @@
 const express = require('express');
 const Cart = require('../models/cart');
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
 const router = express.Router();
 
 
-router.get('/carts', withAuth, async (req, res, next) => {
+router.get('/carts', async (req, res, next) => {
   try {
     const carts = await Cart.findAll();
     res.json(carts);
@@ -13,7 +13,7 @@ router.get('/carts', withAuth, async (req, res, next) => {
   }
 });
 
-router.get('/carts/:id', withAuth, async (req, res, next) => {
+router.get('/carts/:id', async (req, res, next) => {
   try {
     const cart = await Cart.findByPk(req.params.id);
     if (!cart) {

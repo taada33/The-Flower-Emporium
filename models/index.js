@@ -1,22 +1,34 @@
-const User = require('./User');
-const Catagories = require('./Catagories');
+// import models
 const Products = require('./Products');
-const ShoppingCart = require('./ShoppingCart');
+const Categories = require('./Categories');
+const ProductCart = require('./ProductCart');
+const User = require('./User')
 
-Catagories.hasMany(Products, {
-    foreignkey: 'catagory_id'
+// Products belongsTo Category
+Products.belongsTo(Categories, {
+  foreignKey: 'category_id',
+});
+// Categories have many Products
+Categories.hasMany(Products, {
+  foreignKey: 'category_id',
+
 });
 
-Products.belongsTo(Catagories, {
-    foreignkey: 'catagory_id'
-});
+User.belongsToMany(Products,{
+  through:ProductCart,
+  foreignKey:'user_id'
+})
 
-ShoppingCart.hasMany(Products, {
-    foreignkey: 'product_id'
-});
+Products.belongsToMany(User,{
+  through:ProductCart,
+  foreignKey:'product_id'
+})
 
-ShoppingCart.hasOne(User, {
-    foreignkey: 'user_id'
-});
+module.exports = {
+  Products,
+  Categories,
+  User,
+  ProductCart,
+};
 
-module.exports = { User, Catagories, Products, ShoppingCart };
+module.exports = { User, Categories, Products, ProductCart };
