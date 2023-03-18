@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Categories, Products } = require('../models');
 const withAuth = require('../utils/auth');
 
 // router.get('/', withAuth, async (req, res) => {
@@ -24,6 +24,20 @@ router.get('/', (req, res) => {
   res.render('homepage', {
     logged_in: req.session.logged_in,
   });
+});
+
+router.get('/category/:id', async (req, res) => {
+  // try {
+    const categoryData = await Categories.findByPk(req.params.id, {
+      include: [{ model: Products }],
+    });
+    const categoryProducts = categoryData.products.map((product) => product.get({ plain: true }));
+    console.log(categoryProducts);
+    res.render('category', { 
+      categoryProducts, 
+      categoryId: req.params.id,
+      logged_in: req.session.logged_in,
+    })
 });
 
 router.get('/login', (req, res) => {

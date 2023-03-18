@@ -29,7 +29,11 @@ router.get('/:id', async (req, res) => {
       return;
     }
 
-    res.status(200).json(categoryData);
+    // res.status(200).json(categoryData);
+    res.render('category', { 
+      // categoryData, 
+      logged_in: req.session.logged_in,
+    })
   } catch (err) {
     res.status(500).json(err);
   }

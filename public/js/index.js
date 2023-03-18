@@ -1,3 +1,5 @@
+console.log(document.location.pathname)
+
 //logo link to home
 const homeLink = document.querySelector('.logo');
 
@@ -13,28 +15,44 @@ const homeDecorBtn = document.querySelector('#homeDecor');
 
 
 flowersBtn.addEventListener('click', () => {
-    document.location.assign('/categories/1')
+    if(document.location.pathname.split('/')[1] == 'category'){
+        document.location.pathname = 'category/1'
+    }else{
+        document.location.assign('category/1')
+    }
 })
 
 plantsBtn.addEventListener('click', () => {
-    document.location.assign('/categories/2')
+    if(document.location.pathname.split('/')[1] == 'category'){
+        document.location.pathname = 'category/2'
+    }else{
+        document.location.assign('category/2')
+    }
 })
 
 plantersBtn.addEventListener('click', () => {
-    document.location.assign('/categories/3')
+    if(document.location.pathname.split('/')[1] == 'category'){
+        document.location.pathname = 'category/3'
+    }else{
+        document.location.assign('category/3')
+    }
 })
 
 homeDecorBtn.addEventListener('click', () => {
-    document.location.assign('/categories/4')
+    if(document.location.pathname.split('/')[1] == 'category'){
+        document.location.pathname = 'category/4'
+    }else{
+        document.location.assign('category/4')
+    }
 })
 
 //cart
     
 const cartBtn = document.querySelector('#cart');
     
-    cartBtn.addEventListener('click', () => {
-        document.location.assign('/cart')
-    })
+cartBtn.addEventListener('click', () => {
+    document.location.assign('/cart')
+})
     
 //about
     
@@ -53,17 +71,17 @@ loginBtn.addEventListener('click', () => {
     document.location.assign('/login')
 })
 
-logoutBtn.addEventListener('click', async () => {
-    const response = await fetch('api/users/logout', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-    })
-    if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to log out');
-      }
-})
+// logoutBtn.addEventListener('click', async () => {
+//     const response = await fetch('api/users/logout', {
+//         method: 'POST',
+//         headers: {'Content-Type': 'application/json'},
+//     })
+//     if (response.ok) {
+//         document.location.replace('/');
+//       } else {
+//         alert('Failed to log out');
+//       }
+// })
 
 
 
