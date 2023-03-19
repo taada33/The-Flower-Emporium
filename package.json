@@ -4,6 +4,10 @@
   "description": "Flower e-commerce website",
   "main": "server.js",
   "scripts": {
+<<<<<<< HEAD
+=======
+    "test": "echo \"Error: no test specified\" && exit 1",
+>>>>>>> 7ae245f59351fdc98a7985cad8a95c473bbe0b8f
     "seed": "node seeds/index.js"
   },
   "repository": {
@@ -18,6 +22,7 @@
   "homepage": "https://github.com/taada33/The-Flower-Emporium#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-handlebars": "^7.0.2",
