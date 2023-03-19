@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Products, Categories, ProductCart,User} = require('../../models');
+const { Products, Categories, ProductCart, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // The `/api/products` endpoint
@@ -28,7 +28,7 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Categories }, { model: User, through: ProductCart }
       ],
     });
-    
+
     if (!productData) {
       res.status(404).json({ message: 'No product with this id' });
       return;

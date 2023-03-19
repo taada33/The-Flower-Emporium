@@ -54,7 +54,7 @@ router.put('/:id', withAuth, async (req, res) => {
       // get the id of the product from the frontend 
       let productId = request.body.productId;
       // find any existing cart of the user
-      let cart = await productCart.findOne({ where: { id: req.session.user_id } });
+      let cart = await ProductCart.findOne({ where: { id: req.session.user_id } });
       // find product already in cart 
       let productToBeAdded = await Products.findOne({
         where: { productId: productId, cartId: cart[0].id }
