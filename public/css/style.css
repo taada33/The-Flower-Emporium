@@ -1,29 +1,23 @@
-.accountSection{
-    background-color: rgb(244, 225, 213);
-    float: right;
-    width: 100%;
+body{
+    background-color: rgb(249, 240, 234);
 }
-.accountSection li {
-    float: right;
-    list-style: none;
-    display: block;
-    /* text-align: center; */
-    margin-right: 20px;
-    padding: 16px;
-}
+
 header{
+    /* position: fixed; */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: rgb(244, 225, 213);
     width: 100%;
 }
 
 .logo{
+    margin-left: 10px;
     height: 200px;
+    width: 200px;
+    cursor: pointer;
 }
-
-img{
-    width:200px;
-}
-
 
 li{
     font-family: 'Rubik', sans-serif;
@@ -34,11 +28,191 @@ li{
     text-decoration: none;
 }
 
-li a{
+li button{
     color: black;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	/* cursor: pointer; */
+	outline: inherit;
+}
+
+li button:hover{
+  opacity: 0.3;
 }
 
 .hero {
     width: 100%;
 }
 
+.category-info{
+    text-align: center;
+}
+
+h2{
+    font-family: 'Rubik', sans-serif;
+}
+
+.card-container{
+    display: flex;
+    margin-left: 250px;
+    margin-right: 200px;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin-left: 15px;
+    border: none;
+    position: relative;
+}
+
+.tile{
+    height: 200px;
+    width: 200px;
+    transition: opacity 0.3s;
+}
+
+.card img:hover{
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+.card:hover:after{
+    align-items: center;
+    content: attr(data-content);
+    position: absolute;
+    left:80px;
+    top: 80px;
+    pointer-events: none;
+}
+
+/* drop down */
+
+/* Dropdown Button */
+.dropbtn {
+    border: none;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(244, 225, 213);
+    min-width: 160px;
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content button:hover {
+    opacity: 0.4;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+
+
+  .footer-section {
+    background-color: rgb(249, 240, 234);
+    padding: 50px 0;
+  }
+  
+  .footer-section h4 {
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .footer-section p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .social-icons li {
+    margin-right: 20px;
+  }
+  
+  .social-icons a {
+    display: block;
+    font-size: 20px;
+    color: #333;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .social-icons li a  {
+    color: black; 
+    font-size: 24px;
+  }
+
+  .social-icons li a[href*="youtube.com"] i {
+    color: red;
+  }
+
+  .tweets {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .tweets h5 {
+    margin-bottom: 10px;
+  }
+  
+  .tweets p {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+
+  .category-text{
+    margin-top: 10px;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+  }
+
+  .product-img{
+    display: inline-block;
+    max-width: 400px;
+    max-height: 400px;
+    margin-top: 10px;
+    margin-left: auto;
+  }
+
+  .product-details{
+    display: inline;
+  }
+
+  .add-cart{
+    border: none;
+    background-color: white;
+    width: 150px;
+    height: 40px;
+  }
+
+  .add-cart:hover{
+    background-color: grey;
+    transition: background-color 0.3s;
+  }

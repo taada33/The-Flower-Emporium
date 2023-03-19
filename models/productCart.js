@@ -15,18 +15,18 @@ ProductCart.init(
     product_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Products',
+        model: 'products',
         key: 'id',
       },
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'User',
+        model: 'user',
         key: 'id',
       },
     },
-    quantities: {
+    quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

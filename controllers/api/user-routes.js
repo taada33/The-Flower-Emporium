@@ -1,10 +1,27 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, ProductCart,Products} = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// get all products
+router.get('/', async (req, res) => {
+  // find all products
+  // be sure to include its associated Category and Tag data
+  try {
+    const userData = await User.findAll(
+    //   {
+    //   include: [{ model:Products  },
+    //   ],
+    // }
+    );
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
+    console.log(req.params.body)
     const dbUserData = await User.create({
       username: req.body.username,
       email: req.body.email,
@@ -12,7 +29,8 @@ router.post('/', async (req, res) => {
     });
     
     req.session.save(() => {
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
+      req.session.user_id = dbUserData.id;
 
       res.status(200).json(dbUserData);
     });
@@ -25,6 +43,7 @@ router.post('/', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
+    console.log(req.body)
     const dbUserData = await User.findOne({
       where: {
         email: req.body.email,
@@ -48,7 +67,8 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
+      req.session.user_id = dbUserData.id;
 
       res
         .status(200)
@@ -62,7 +82,7 @@ router.post('/login', async (req, res) => {
 
 // Logout
 router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
     });
