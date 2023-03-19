@@ -1,0 +1,18 @@
+
+
+
+<img class="product-img" src="../images/{{product.filename}}" alt="product.filename">
+
+<div class="product-details">
+    <h2>{{product.name}}</h2>
+    <p>price: {{product.price}}$</p>
+    <p>{{product.description}}</p>
+    <p>stock: {{product.stock}}</p>
+    <label for="quantity">Quantity:</label>
+    <input type="quantity" id="quantity" name="quantity">
+    <button data-id="{{product.id}}" data-stock="{{product.stock}}" class="add-cart">Add to Cart</button>
+
+</div>
+
+
+<script src="../js/product.js"></script>

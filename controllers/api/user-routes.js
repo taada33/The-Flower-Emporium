@@ -5,6 +5,7 @@ const withAuth = require('../../utils/auth');
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
+    console.log(req.params.body)
     const dbUserData = await User.create({
       username: req.body.username,
       email: req.body.email,
@@ -12,7 +13,7 @@ router.post('/', async (req, res) => {
     });
     
     req.session.save(() => {
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
 
       res.status(200).json(dbUserData);
     });
@@ -25,6 +26,7 @@ router.post('/', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
+    console.log(req.body)
     const dbUserData = await User.findOne({
       where: {
         email: req.body.email,
@@ -48,7 +50,7 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
 
       res
         .status(200)
@@ -62,7 +64,7 @@ router.post('/login', async (req, res) => {
 
 // Logout
 router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
     });

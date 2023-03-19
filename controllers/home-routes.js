@@ -14,7 +14,7 @@ const withAuth = require('../utils/auth');
 //     res.render('homepage', {
 //       users,
 //       logged_in: req.session.logged_in,
-//     });
+//     });`
 //   } catch (err) {
 //     res.status(500).json(err);
 //   }
@@ -40,6 +40,17 @@ router.get('/category/:id', async (req, res) => {
     })
 });
 
+router.get('/product/:id', async (req, res) => {
+  // try {
+    const productData = await Products.findByPk(req.params.id);
+    const product = productData.get({ plain: true });
+    console.log(product);
+    res.render('product', { 
+      product, 
+      logged_in: req.session.logged_in,
+    })
+});
+
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -48,5 +59,9 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+router.get('/about', (req,res) => {
+  res.render('about');
+})
 
 module.exports = router;

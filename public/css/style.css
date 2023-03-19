@@ -85,6 +85,7 @@ h2{
     position: absolute;
     left:80px;
     top: 80px;
+    pointer-events: none;
 }
 
 /* drop down */
@@ -106,6 +107,7 @@ h2{
     position: absolute;
     background-color: rgb(244, 225, 213);
     min-width: 160px;
+    z-index: 1;
   }
   
   /* Links inside the dropdown */
@@ -186,6 +188,31 @@ h2{
   }
 
   .category-text{
+    margin-top: 10px;
     text-align: center;
     font-family: 'Rubik', sans-serif;
+  }
+
+  .product-img{
+    display: inline-block;
+    max-width: 400px;
+    max-height: 400px;
+    margin-top: 10px;
+    margin-left: auto;
+  }
+
+  .product-details{
+    display: inline;
+  }
+
+  .add-cart{
+    border: none;
+    background-color: white;
+    width: 150px;
+    height: 40px;
+  }
+
+  .add-cart:hover{
+    background-color: grey;
+    transition: background-color 0.3s;
   }

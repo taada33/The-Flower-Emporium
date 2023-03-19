@@ -1,4 +1,4 @@
-console.log(document.location.pathname)
+
 
 //logo link to home
 const homeLink = document.querySelector('.logo');
@@ -67,21 +67,26 @@ aboutBtn.addEventListener('click', () => {
 const loginBtn = document.querySelector('#login');
 const logoutBtn = document.querySelector('#logout')
 
-loginBtn.addEventListener('click', () => {
-    document.location.assign('/login')
-})
+if(loginBtn !== null){
+    loginBtn.addEventListener('click', () => {
+        document.location.assign('/login')
+    })
+}
 
-// logoutBtn.addEventListener('click', async () => {
-//     const response = await fetch('api/users/logout', {
-//         method: 'POST',
-//         headers: {'Content-Type': 'application/json'},
-//     })
-//     if (response.ok) {
-//         document.location.replace('/');
-//       } else {
-//         alert('Failed to log out');
-//       }
-// })
+if(logoutBtn !== null){
+    logoutBtn.addEventListener('click', async () => {
+        const response = await fetch('api/users/logout', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+        })
+        if (response.ok) {
+            document.location.replace('/');
+          } else {
+            alert('Failed to log out');
+          }
+    })
+}
+
 
 
 

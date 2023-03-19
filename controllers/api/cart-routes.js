@@ -16,6 +16,18 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/', async (req,res) => {
+  try {
+    const cartData = await ProductCart.create({
+      product_id: id,
+      quantity: quantity,
+    })
+    res.status(200).json(cartData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products -- ? 
