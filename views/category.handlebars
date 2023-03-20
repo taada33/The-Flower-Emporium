@@ -1,0 +1,13 @@
+<div class="category-text">
+{{{checkCategory categoryId}}}
+</div>
+
+<section class="card-container">
+    {{#each categoryProducts as |products|}}
+    <div class="card" data-id="{{products.id}}" data-content="{{products.name}}">
+                <img class="tile" src="/images/{{products.filename}}" alt="{{products.filename}}">
+    </div>
+    {{/each}}
+</section>
+
+<script src="../js/categories.js"></script>
