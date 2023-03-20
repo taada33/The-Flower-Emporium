@@ -16,13 +16,6 @@ module.exports = {
             <p>Thoughtful and contemporary designs for your home.</p>`;
         }
     },
-    sum: (...price) => {
-        let sum = 0;
-        price.forEach((element) => {
-            sum += element;
-        })
-        return sum;
-    },
 
     total: (price,quantity) => {
         //total cost of a quantity of product

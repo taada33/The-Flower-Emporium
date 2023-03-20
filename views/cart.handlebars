@@ -2,20 +2,20 @@
 
 {{#if userCart}}
 {{#each userCart as |item|}}
-<div class="product-details">
+<div class="product-details" data-product-name="{{product.name}}" data-product-quantity="{{item.quantities}}" data-product-price="{{item.product.price}}">
     <img class="product-img" src="../images/{{product.filename}}" alt="product.filename">
-<h2>{{product.name}}</h2>
+    <h2>{{product.name}}</h2>
     <p>price: {{item.product.price}}$</p>
     <p>{{item.product.description}}</p>
     <p>stock: {{item.product.stock}}</p>
     <label for="quantity">Quantity:</label>
-    <input type="number" min="0" id="quantity" data-price="{{item.product.price}}" name="quantity" value="{{item.quantities}}">
-    <p class="total">total: $ </p>
+    <input type="number" min="0" max="{{item.product.stock}}" data-cart-id="{{item.id}}" class="quantity-input" data-id="{{item.product.id}}" data-price="{{item.product.price}}" name="quantity" value="{{item.quantities}}">
+    <p class="total">total: $ {{total item.product.price item.quantities}}</p>
     <button data-id="{{item.product.id}}" class="rm-btn button">Remove Product</button>
 </div>
 {{/each}}
 <p class="subtotal"></p>
-<button class="button">Checkout</button>
+<button class="button" id="checkout-btn">Checkout</button>
 {{else}}
 <div class="category-text">
 <p>There are no items in your cart.</p>
