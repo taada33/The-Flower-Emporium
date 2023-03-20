@@ -30,5 +30,5 @@ const login = async () => {
 const registerBtn = document.querySelector('#register-btn')
 registerBtn.addEventListener('click', register);
 
-const loginBtn = document.querySelector('#login-btn');
-loginBtn.addEventListener('click', login);
+const loginFormBtn = document.querySelector('#login-btn');
+loginFormBtn.addEventListener('click', login);

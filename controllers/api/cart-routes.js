@@ -104,16 +104,13 @@ router.delete('/:id', async (req, res) => {
   try {
     const cartData = await ProductCart.destroy({
       where: {
-        id: req.params.id
+        product_id: req.params.id
       }
     });
-
     res.status(200).json(cartData);
   } catch (err) {
     res.status(500).json(err);
   }
-
-
 });
 
 module.exports = router;

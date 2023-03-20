@@ -205,14 +205,14 @@ h2{
     display: inline;
   }
 
-  .add-cart{
+  .button{
     border: none;
     background-color: white;
     width: 150px;
     height: 40px;
   }
 
-  .add-cart:hover{
+  .button:hover{
     background-color: grey;
     transition: background-color 0.3s;
   }

@@ -1,5 +1,4 @@
 const addToCartBtn = document.querySelector('.add-cart');
-const quantityInput = document.querySelector('#quantity')
 
 addToCartBtn.addEventListener('click', async () => {
     if(!+addToCartBtn.getAttribute('data-stock')){
@@ -9,7 +8,7 @@ addToCartBtn.addEventListener('click', async () => {
             method: 'POST',
             body: JSON.stringify({ 
                 id: addToCartBtn.getAttribute('data-id'), 
-                quantity: quantityInput.value.trim(), 
+                quantity: 1, 
             }),
             headers: {'Content-Type': 'application/json'},
         })
