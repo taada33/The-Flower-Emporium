@@ -3,8 +3,6 @@ body{
 }
 
 header{
-    /* position: fixed; */
-    margin: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -13,7 +11,6 @@ header{
 }
 
 .logo{
-    margin-left: 10px;
     height: 200px;
     width: 200px;
     cursor: pointer;
@@ -21,9 +18,9 @@ header{
 
 li{
     font-family: 'Rubik', sans-serif;
-    float: left;
+    flex-wrap: wrap;
     list-style: none;
-    display: block;
+    display: inline;
     padding: 16px;
     text-decoration: none;
 }
@@ -58,8 +55,8 @@ h2{
 
 .card-container{
     display: flex;
-    margin-left: 250px;
-    margin-right: 200px;
+    margin-left: 25%;
+    /* margin-right: 25%; */
     flex-wrap: wrap;
 }
 
@@ -149,12 +146,14 @@ h2{
   
   .social-icons {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-bottom: 30px;
+    align-items: center;
+    justify-content: center;
   }
   
   .social-icons li {
-    margin-right: 20px;
+    /* margin-right: 20px; */
   }
   
   .social-icons a {
@@ -192,6 +191,8 @@ h2{
 
   .category-text{
     margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     text-align: center;
     font-family: 'Rubik', sans-serif;
   }
@@ -209,6 +210,8 @@ h2{
 
   .product-img{
     /* display: inline-block; */
+    width: auto;
+    height: auto;
     max-width: 300px;
     max-height: 300px;
     margin-top: 10px;
@@ -281,4 +284,98 @@ h2{
     margin-right: 13%;
   }
 
+  @media screen and (max-width: 992px) {
+    .product{
+      /* display: flex; */
+      width: 30vw;
+      height: 30vh;
+      /* flex-shrink: 1; */
+      /* border: 1px solid black; */
+      width: fit-content;
+      /* justify-content: left; */
+      /* max-width: 800px; */
+      /* margin: 10px; */
+      margin-left: 0;
+      background-color: rgb(244, 225, 213);
+    }
   
+    .product-img{
+      /* display: inline-block; */
+      height: 25vh;
+      width: 20vw;
+      margin-top: 10px;
+      /* margin-left: 30%; */
+    }
+  
+    .product-details{
+      margin-left: 10px;
+      display: inline;
+      width: 30%;
+    }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .logo{
+      margin-left: 25%;
+      align-items: center;
+      justify-content: center;
+    }
+    header {
+      display: block;
+    }
+    nav{
+      margin-left: 15%;
+    }
+    .user-container{
+      left: 20%;
+    }
+
+
+    .product-img{
+      height:40%;
+      width:40%;
+      display: block;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .logo{
+      margin-left: 25%;
+    }
+    header {
+      display: block;
+      /* height: 60%; */
+    }
+    nav{
+      margin-left: 10%;
+    }
+    .user-container{
+      left: 10%;
+    }
+  }
+
+  @media screen and (max-width: 300px) {
+    .logo{
+      margin-left: 15%;
+    }
+    nav{
+      font-size: 11px;
+      margin-left:0;
+    }
+    .card-container{
+      margin-left: 10%;
+    }
+    .social-icons {
+      display: flex;
+      justify-content:left;
+      margin-bottom: 30px;
+      margin-right: 10px;
+    }
+
+    .user-container{
+      left: 0;
+      font-size: smaller;
+      border: none;
+    }
+  }
