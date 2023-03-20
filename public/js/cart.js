@@ -18,6 +18,9 @@ quantityInputs.forEach((input) => {
                 method: 'delete',
             })
         }else{
+            if(+input.value > +input.getAttribute('max')){
+                input.value = input.getAttribute('max');
+            }
             const response = await fetch(`/api/productCart/${input.getAttribute('data-cart-id')}`, {
                 method: 'put',
                 body: JSON.stringify({ 

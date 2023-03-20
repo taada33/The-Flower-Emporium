@@ -9,7 +9,7 @@ const login = async () => {
             body: JSON.stringify({ email: email, password: password}),
             headers: {'Content-Type': 'application/json'},
         })
-        document.location.pathname = '/';
+        setTimeout(document.location.pathname = '/', 1500);
     }else{
         alert('Missing Login form input(s)')
     }

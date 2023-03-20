@@ -84,7 +84,7 @@ router.delete('/checkout', async (req,res) => {
 
     
 
-    // deleteAll where user_id = x
+    // deleteAll where user_id = session id
     const cartDeleteData = await ProductCart.destroy({
       where: {
         user_id: req.session.user_id,
