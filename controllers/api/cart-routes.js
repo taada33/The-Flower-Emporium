@@ -3,24 +3,14 @@ const sequelize = require('../../config/connection')
 const withAuth = require('../../utils/auth');
 const { Categories, Products, User, ProductCart} = require('../../models');
 
-// The `/api/categories` endpoint
-
-router.get('/', async (req, res) => {
-  try {
-    const cartData = await cart.findAll({
-      include: [{ model: Products, through: ProductCart }, { model: User, through: ProductCart }],
-    });
-    res.status(200).json(cartData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// The `/api/productCart` endpoint
 
 router.post('/', async (req,res) => {
   try {
     const cartData = await ProductCart.create({
-      product_id: id,
-      quantity: quantity,
+      product_id: req.body.id,
+      user_id: req.session.user_id,
+      quantities: req.body.quantity,
     })
     res.status(200).json(cartData);
   } catch (err) {

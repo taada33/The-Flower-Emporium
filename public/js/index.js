@@ -1,5 +1,3 @@
-
-
 //logo link to home
 const homeLink = document.querySelector('.logo');
 
@@ -15,35 +13,19 @@ const homeDecorBtn = document.querySelector('#homeDecor');
 
 
 flowersBtn.addEventListener('click', () => {
-    if(document.location.pathname.split('/')[1] == 'category'){
-        document.location.pathname = 'category/1'
-    }else{
-        document.location.assign('category/1')
-    }
+    document.location.pathname = 'category/1'
 })
 
 plantsBtn.addEventListener('click', () => {
-    if(document.location.pathname.split('/')[1] == 'category'){
-        document.location.pathname = 'category/2'
-    }else{
-        document.location.assign('category/2')
-    }
+    document.location.pathname = 'category/2'
 })
 
 plantersBtn.addEventListener('click', () => {
-    if(document.location.pathname.split('/')[1] == 'category'){
-        document.location.pathname = 'category/3'
-    }else{
-        document.location.assign('category/3')
-    }
+    document.location.pathname = 'category/3'
 })
 
 homeDecorBtn.addEventListener('click', () => {
-    if(document.location.pathname.split('/')[1] == 'category'){
-        document.location.pathname = 'category/4'
-    }else{
-        document.location.assign('category/4')
-    }
+    document.location.pathname = 'category/4'
 })
 
 //cart

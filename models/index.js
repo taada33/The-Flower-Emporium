@@ -15,14 +15,20 @@ Categories.hasMany(Products, {
 });
 
 User.belongsToMany(Products,{
-  through:ProductCart,
+  through: ProductCart,
   foreignKey:'user_id'
 })
 
 Products.belongsToMany(User,{
-  through:ProductCart,
+  through: ProductCart,
   foreignKey:'product_id'
 })
+
+User.hasMany(ProductCart);
+ProductCart.belongsTo(User);
+
+Products.hasMany(ProductCart);
+ProductCart.belongsTo(Products);
 
 module.exports = {
   Products,
@@ -30,5 +36,3 @@ module.exports = {
   User,
   ProductCart,
 };
-
-module.exports = { User, Categories, Products, ProductCart };
