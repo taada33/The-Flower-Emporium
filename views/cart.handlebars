@@ -1,0 +1,15 @@
+{{#each userCart as |item|}}
+
+<div class="product-details">
+    <img class="product-img" src="../images/{{product.filename}}" alt="product.filename">
+<h2>{{product.name}}</h2>
+    <p>price: {{item.product.price}}$</p>
+    <p>{{item.product.description}}</p>
+    <p>stock: {{item.product.stock}}</p>
+    <label for="quantity">Quantity:</label>
+    <input type="quantity" id="quantity" name="quantity" value="{{item.quantities}}">
+    <button>Remove Product</button>
+</div>
+{{/each}}
+
+<button>Checkout</button>

@@ -1,68 +1,74 @@
+//logo link to home
+const homeLink = document.querySelector('.logo');
+
+homeLink.addEventListener('click', () => {
+    document.location.assign('/')
+})
+
+//categories menu dropdown
+const flowersBtn = document.querySelector('#flowers');
+const plantsBtn = document.querySelector('#plants');
+const plantersBtn = document.querySelector('#planters');
+const homeDecorBtn = document.querySelector('#homeDecor');
 
 
-// var stripe = Stripe('process.env.YOUR_KEY');
-// const button = document.getElementById('checkout-button');
+flowersBtn.addEventListener('click', () => {
+    document.location.pathname = 'category/1'
+})
+
+plantsBtn.addEventListener('click', () => {
+    document.location.pathname = 'category/2'
+})
+
+plantersBtn.addEventListener('click', () => {
+    document.location.pathname = 'category/3'
+})
+
+homeDecorBtn.addEventListener('click', () => {
+    document.location.pathname = 'category/4'
+})
+
+//cart
+    
+const cartBtn = document.querySelector('#cart');
+    
+cartBtn.addEventListener('click', () => {
+    document.location.assign('/cart')
+})
+    
+//about
+    
+const aboutBtn = document.querySelector('#about');
+
+aboutBtn.addEventListener('click', () => {
+    document.location.assign('/about')
+})
 
 
-// button.addEventListener("click", function () {
-//   fetch("/payment", {
-//     headers: {'Content-Type': 'application/json'},
-//     method: "POST",
-//     body: JSON.stringify({
-//         "product": {
-//             "name": "flower", 
-//             "amount": 100,
-//             "quantity": 1
-//         }})
-//   })
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (session) {
-//       return stripe.redirectToCheckout({ sessionId: session.id });
-//     })
-//     .then(function (result) {
-//       // If redirectToCheckout fails due to a browser or network
-//       // error, you should display the localized error message to your
-//       // customer using error.message.
-//       if (result.error) {
-//         alert(result.error.message);
-//       }
-//     })
-//     .catch(function (error) {
-//       console.error("Error:", error);
-//     });
-// });
+//user login / logout
+const loginBtn = document.querySelector('#login');
+const logoutBtn = document.querySelector('#logout')
 
-
-document.addEventListener('DOMContentLoaded', function() {
-  var offset = 1; // Set the offset to 1 to start loading products after the initial product
-  
-  document.getElementById('load-more').addEventListener('click', function() {
-    // Make an AJAX request to fetch the remaining products
-    fetch('/load-more', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: 'offset=' + offset
+if(loginBtn !== null){
+    loginBtn.addEventListener('click', () => {
+        document.location.assign('/login')
     })
-    .then(response => {
-      if (response.ok) {
-        return response.text();
-      } else {
-        throw new Error('Error loading products.');
-      }
-    })
-    .then(data => {
-      // Append the fetched products to the #remaining-products div
-      document.getElementById('remaining-products').insertAdjacentHTML('beforeend', data);
+}
 
-      // Increment the offset for the next AJAX request
-      offset += 5;
+if(logoutBtn !== null){
+    logoutBtn.addEventListener('click', async () => {
+        const response = await fetch('api/users/logout', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+        })
+        if (response.ok) {
+            document.location.replace('/');
+          } else {
+            alert('Failed to log out');
+          }
     })
-    .catch(error => {
-      alert(error.message);
-    });
-  });
-});
+}
+
+
+
+

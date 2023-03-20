@@ -4,66 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>The Flower Emporium</title>
+    <link rel="stylesheet" href="../css/jass.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/jass.css">
-    <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/b1d2f96354.js" crossorigin="anonymous"></script>
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
-    <header name="navbar">
-    <navbar>
-      <section class="accountSection">
-        <nav >
-            <li><a href="../login"><i class="fa-regular fa-user"></i> Login</a></li>
-            <li><a href=""><i class="fa-solid fa-bag-shopping"></i></a></li>
-           
+    <header>
+         <img class="logo" src="../images/logo.png" alt="Flower Emporium Logo">
+        <nav>
+            <li><div class="dropdown">
+                <button class="dropbtn category">Shop <i class="fa-solid fa-angle-down"></i></button>
+                <div class="dropdown-content">
+                  <button id="flowers">Flowers</button>
+                  <button id="plants">Plants</button>
+                  <button id="planters">Planters</button>
+                  <button id="homeDecor">Home Decor</button>
+                </div>
+              </div></li>
+            {{#if logged_in}}
+            <li><button id="logout"><i class="fa-regular fa-user"></i> Logout</button></li>
+            {{else}}
+            <li><button id="login"><i class="fa-regular fa-user"></i> Login</button></li>
+            {{/if}}
+            <li><button id="cart"><i class="fa-solid fa-bag-shopping"></i></button></li>
+            <li><button id="about">About</button></li>
         </nav>
-      </section>
+    </header>
+
+    <section>
+        {{{body}}}
+    </section>
     
-      <header class="display-flex justify-space-between align-center p-2 col-auto">
-        <h1> 
-          <a href=""><img class="logo" src="../assets/logo.png" alt="Flower Emporium Logo"></a>
-        </h1><h3 class="name-animation">Flower Emporiom</h3>
-        <nav class="contentNav ">
-            <li><a href="">Shop <i class="fa-solid fa-angle-down"></i></a></li>
-            <li><a href="">Services <i class="fa-solid fa-angle-down"></i></a></li>
-            <li><a href="">About</a></li>
-        </nav>
-       </header>
-  </navbar>
-</header>
-  <main> {{{body}}} </main>
-   
-<footer class="footer-section">
-    <div class="footer-container">
-        <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <h4>About Us</h4>
-                <p>We are a company dedicated to providing high-quality products to our customers.</p>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <h4>Connect with Us</h4>
-                <ul class="social-icons">
-                   <li><a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a></li>
-                   <li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
-                   <li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
-                   <li><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <h4>Latest Tweets</h4>
-                <div class="tweets">
-                    <!-- Twitter API code goes here -->
+    {{!-- {{> login}} --}}
+
+    {{!-- {{> product}} --}}
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xl-12">
+                    <h4>About Us</h4>
+                    <p>We are a company dedicated to providing high-quality products to our customers.</p>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xl-12">
+                    <h4>Connect with Us</h4>
+                    <ul class="social-icons">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xl-12">
+                    <h4>Latest Tweets</h4>
+                    <div class="tweets">
+                        <!-- Twitter API code goes here -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</footer>
+        </div>  
+    </footer>
+
+    <script src="../js/index.js"></script>
 </body>
 <script src="./js/chat.js"></script>
 <script src="./js/index.js"></script>

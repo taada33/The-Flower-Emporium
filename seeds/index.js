@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const seedCatagories = require('./categoriesData');
+const seedCatagories = require('./catagoriesData');
 const seedProducts = require('./productsData');
 
 const seedAll = async() => {

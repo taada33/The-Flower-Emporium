@@ -34,7 +34,11 @@ Products.init(
         },
 
         price: {
+<<<<<<< HEAD
             type: DataTypes.DECIMAL,
+=======
+            type: DataTypes.DECIMAL(10,2),
+>>>>>>> 643749d22c3ee5adddc1159c912b57f2983c4ee6
             allowNull: false,
         },
 
@@ -52,7 +56,11 @@ Products.init(
         freezeTableName: true,
         timestamps:false,
         underscored: true,
+<<<<<<< HEAD
         modelName: 'Products',
+=======
+        modelName: 'products',
+>>>>>>> 643749d22c3ee5adddc1159c912b57f2983c4ee6
     }
 );
 
