@@ -1,36 +1,18 @@
-// const checkoutForm = document.querySelector('#checkout');
+const formData = new URLSearchParams();
 
 
-// checkoutForm.addEventListener('submit', async (event) => {
-//   event.preventDefault();
+formData.append('productName', product.name);
+formData.append('amount', product.price);
 
-//   const response = await fetch('/', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       line_items: [
-//         {
-//           price_data: {
-//             currency: 'usd',
-//             product_data: {
-//               name: 'T-shirt',
-//               images: ['https://example.com/t-shirt.png'],
-//             },
-//             unit_amount: 2000,
-//           },
-//           quantity: 1,
-//         },
-//       ],
-//     }),
-//   });
-
-//   const session = await response.json();
-
-//   const stripe = Stripe('YOUR_STRIPE_PUBLIC_KEY');
-//   stripe.redirectToCheckout({
-//     sessionId: session.id,
-//   });
-// });
-
+fetch('/create-session', {
+  method: 'POST',
+  body: formData
+})
+.then(response => response.json())
+.then(data => {
+  // Redirect to Stripe Checkout page
+  window.location = data.url;
+})
+.catch(error => {
+  console.error('Error creating Stripe Checkout session:', error);
+});

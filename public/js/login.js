@@ -1,4 +1,4 @@
-const register = async () => {
+const register = async (event) => {
     event.preventDefault();
     const username = document.querySelector('#reg-name').value.trim();
     const email = document.querySelector('#reg-email').value.trim();
