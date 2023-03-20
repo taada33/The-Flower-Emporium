@@ -242,11 +242,13 @@ li a{
   
   .grid-container {
     display: grid;
-    justify-content: space-evenly;
-    grid-template-columns: 400px 400px 400px; /*Make the grid smaller than the container*/
-    gap: 15px;
-    padding: 10px;
-    height: 900px;
+    justify-content: center;
+    grid-template-columns: 150px 150px 150px; /*Make the grid smaller than the container*/
+    gap: 40px;
+    padding: 30px;
+    height: auto;
+    font-size: 14px;
+    align-items: center;
   }
   
 
