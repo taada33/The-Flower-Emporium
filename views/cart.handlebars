@@ -1,5 +1,7 @@
-{{#each userCart as |item|}}
+<h2>Shopping Cart</h2>
 
+{{#if userCart}}
+{{#each userCart as |item|}}
 <div class="product-details">
     <img class="product-img" src="../images/{{product.filename}}" alt="product.filename">
 <h2>{{product.name}}</h2>
@@ -7,9 +9,19 @@
     <p>{{item.product.description}}</p>
     <p>stock: {{item.product.stock}}</p>
     <label for="quantity">Quantity:</label>
-    <input type="quantity" id="quantity" name="quantity" value="{{item.quantities}}">
-    <button>Remove Product</button>
+    <input type="number" min="0" id="quantity" data-price="{{item.product.price}}" name="quantity" value="{{item.quantities}}">
+    <p class="total">total: $ </p>
+    <button data-id="{{item.product.id}}" class="rm-btn button">Remove Product</button>
 </div>
 {{/each}}
+<p class="subtotal"></p>
+<button class="button">Checkout</button>
+{{else}}
+<div class="category-text">
+<p>There are no items in your cart.</p>
+</div>
 
-<button>Checkout</button>
+{{/if}}
+
+
+<script src="../js/cart.js"></script>

@@ -23,7 +23,7 @@ router.get('/category/:id', async (req, res) => {
     })
 });
 
-router.get('/product/:id', async (req, res) => {
+router.get('/product/:id', withAuth, async (req, res) => {
   // try {
     const productData = await Products.findByPk(req.params.id);
     const product = productData.get({ plain: true });
@@ -44,23 +44,30 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/about', (req,res) => {
-  res.render('about');
+  res.render('about',
+  {
+    logged_in: req.session.logged_in,
+  });
 })
 
-router.get('/cart', async (req, res) => {
+router.get('/cart', withAuth, async (req, res) => {
   try {
     const cartData = await ProductCart.findAll({
       include: { model: Products},
       where: {user_id: req.session.user_id}
     });
     const userCart = cartData.map((element) => element.get({ plain: true}))
-    console.log(userCart)
-    res.render('cart', {
-      userCart,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
+    // if(userCart.length === 0){
+    //   res.redirect('/')
+    //   return;
+    // }
+      res.render('cart', {
+        userCart,
+        logged_in: req.session.logged_in,
+      });
+    }
+    catch (err) {
+      res.status(500).json(err);
   }
 });
 

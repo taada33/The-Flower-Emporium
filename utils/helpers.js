@@ -15,5 +15,17 @@ module.exports = {
             return `<h1>Home Decor</h1>
             <p>Thoughtful and contemporary designs for your home.</p>`;
         }
-    }
+    },
+    sum: (...price) => {
+        let sum = 0;
+        price.forEach((element) => {
+            sum += element;
+        })
+        return sum;
+    },
+
+    total: (price,quantity) => {
+        //total cost of a quantity of product
+        return price * quantity;
+    },
 }
