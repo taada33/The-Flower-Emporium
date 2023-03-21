@@ -1,5 +1,7 @@
-<img class="product-img" src="../images/{{product.filename}}" alt="product.filename">
+<div class="product">
+    <img class="product-img" src="../images/{{product.filename}}" alt="product.filename">
 
+<<<<<<< HEAD
 <div class="product-details">
     <h2>{{product.name}}</h2>
     <p>price: {{product.price}}$</p>
@@ -14,4 +16,22 @@
     {{/if}}
 </div>
 
+=======
+    <div class="product-details">
+        <h2>{{product.name}}</h2>
+        <p>{{product.description}}</p>
+        <p>stock: {{product.stock}}</p>
+        <p>price: {{product.price}}$</p>
+    </div>
+    <div class="add-item-div">
+        {{#if isInCart}}
+        <p class="in-cart"><i class="fa-solid fa-check"></i> Added to Cart</p>
+        {{else}}
+        <button data-id="{{product.id}}" data-stock="{{product.stock}}" class="button add-cart">Add to Cart</button>
+        {{/if}}
+    </div>
+</div>
+
+
+>>>>>>> 4f5677176921f75f068ea96b11a389ce49331cb2
 <script src="../js/product.js"></script>

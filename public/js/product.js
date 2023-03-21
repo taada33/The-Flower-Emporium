@@ -1,8 +1,6 @@
 const addToCartBtn = document.querySelector('.add-cart');
-const addedToCartEl = document.querySelector('.added-to-cart');
 
-if(addedToCartEl){
-    addedToCartEl.style.display = "none";
+if(addToCartBtn){
     addToCartBtn.addEventListener('click', async () => {
         if(!+addToCartBtn.getAttribute('data-stock')){
             alert("Sold out!")
@@ -15,12 +13,10 @@ if(addedToCartEl){
                 }),
                 headers: {'Content-Type': 'application/json'},
             })
-            addedToCartEl.style.display = "block";
-            addToCartBtn.style.display = "none";
+            setTimeout(document.location.reload(), 1500)
         }
     })
 }
-
 
 
 

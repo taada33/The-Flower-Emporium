@@ -11,7 +11,7 @@ const register = async () => {
             body: JSON.stringify({ username: username, email: email, password: password}),
             headers: {'Content-Type': 'application/json'},
         })
-        document.location.pathname = '/';
+        setTimeout(document.location.pathname = '/', 1500);
     }else{
         alert("Missing registration form input(s)")
     }
