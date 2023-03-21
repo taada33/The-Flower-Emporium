@@ -5,9 +5,13 @@
     <p>price: {{product.price}}$</p>
     <p>{{product.description}}</p>
     <p>stock: {{product.stock}}</p>
-    <label for="quantity">Quantity:</label>
-    <input type="quantity" id="quantity" name="quantity">
-    <button data-id="{{product.id}}" data-stock="{{product.stock}}" class="add-cart">Add to Cart</button>
+    {{#if isInCart}}
+    <p class="in-cart"><i class="fa-duotone fa-check"></i> Added to Cart</p>
+    {{else}}
+    <button data-id="{{product.id}}" data-stock="{{product.stock}}" class="button add-cart">Add to Cart</button>
+    <p class="added-to-cart"><i class="fa-duotone fa-check"></i> Added to Cart</p>
+    {{!-- <button>checkout</button> --}}
+    {{/if}}
 </div>
 
 <script src="../js/product.js"></script>

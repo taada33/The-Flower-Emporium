@@ -28,14 +28,20 @@ homeDecorBtn.addEventListener('click', () => {
     document.location.pathname = 'category/4'
 })
 
+// const btn = document.querySelector(".checkoutbtn")
+// console.log(btn)
+
 //cart
     
 const cartBtn = document.querySelector('#cart');
+
+console.log(cartBtn)
     
 cartBtn.addEventListener('click', () => {
     document.location.assign('/cart')
 })
     
+
 //about
     
 const aboutBtn = document.querySelector('#about');

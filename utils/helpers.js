@@ -15,5 +15,10 @@ module.exports = {
             return `<h1>Home Decor</h1>
             <p>Thoughtful and contemporary designs for your home.</p>`;
         }
-    }
+    },
+
+    total: (price,quantity) => {
+        //total cost of a quantity of product
+        return price * quantity;
+    },
 }

@@ -1,34 +1,28 @@
-const register = async (event) => {
-    event.preventDefault();
-    const username = document.querySelector('#reg-name').value.trim();
-    const email = document.querySelector('#reg-email').value.trim();
-    const password = document.querySelector('#reg-password').value.trim();
-
-    
-    
-    const response = await fetch('api/users/', {
-        method: 'POST',
-        body: JSON.stringify({ username: username, email: email, password: password}),
-        headers: {'Content-Type': 'application/json'},
-    })
-    document.location.pathname = '/';
-}
-
 const login = async () => {
     event.preventDefault();
     const email = document.querySelector('#email').value.trim();
     const password = document.querySelector('#password').value.trim();
 
-    const response = await fetch('api/users/login', {
-        method: 'POST',
-        body: JSON.stringify({ email: email, password: password}),
-        headers: {'Content-Type': 'application/json'},
-    })
-    document.location.pathname = '/';
+    if(email && password){
+        const response = await fetch('api/users/login', {
+            method: 'POST',
+            body: JSON.stringify({ email: email, password: password}),
+            headers: {'Content-Type': 'application/json'},
+        })
+        document.location.pathname = '/';
+    }else{
+        alert('Missing Login form input(s)')
+    }
+    
 }
 
-const registerBtn = document.querySelector('#register-btn')
-registerBtn.addEventListener('click', register);
 
-const loginBtn = document.querySelector('#login-btn');
-loginBtn.addEventListener('click', login);
+const loginFormBtn = document.querySelector('#login-btn');
+loginFormBtn.addEventListener('click', login);
+
+
+const registerBtn = document.querySelector('#signup-btn');
+
+registerBtn.addEventListener('click', () => {
+    document.location.assign('/register')
+})

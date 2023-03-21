@@ -205,14 +205,103 @@ h2{
     display: inline;
   }
 
-  .add-cart{
+  .button{
     border: none;
     background-color: white;
     width: 150px;
     height: 40px;
   }
 
-  .add-cart:hover{
+  .button:hover{
     background-color: grey;
     transition: background-color 0.3s;
   }
+
+
+/* Extra small devices (phones) */
+@media only screen and (max-width: 575px) {
+  /* Styles for extra small devices */
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 50%;
+  }
+  
+  .dropdown-content {
+    display: none;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Other styles as needed */
+}
+
+/* Small devices (tablets) */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  /* Styles for small devices */
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    width: 20%;
+  }
+  
+  .dropdown-content {
+    display: none;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Other styles as needed */
+}
+
+/* Medium devices (laptops, desktops) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /* Styles for medium devices */
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    width: 30%;
+  }
+  
+  .dropdown-content {
+    display: block;
+  }
+  
+  /* Other styles as needed */
+}
+
+/* Large devices (large desktops) */
+@media only screen and (min-width: 992px) {
+  /* Styles for large devices */
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    width: 20%;
+  }
+  
+  .dropdown-content {
+    display: block;
+  }
+  
+  /* Other styles as needed */
+}

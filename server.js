@@ -4,14 +4,20 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const stripe = require('stripe')('process.env.YOUR_STRIPE_PUBLIC_KEY');
+const cors =require('cors');
+require('dotenv').config();
+const stripe = require('stripe')(process.env.YOUR_STRIPE_PRIVATE_KEY);
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
+app.use(cors({
+  origin:"*"
+}));
+// app.options('*', cors());
 const sess = {
   secret: 'Super secret secret',
   cookie: {
@@ -41,30 +47,35 @@ app.use(express.static(path.join(__dirname, 'public')));
 // turn on routes
 app.use(routes);
 
-app.post('/create-session', async (req, res) => {
-  const { productName, amount } = req.body;
 
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: [
-      {
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: productName,
-          },
-          unit_amount: amount, // Amount in cents
-        },
-        quantity: 1,
-      },
-    ],
-    mode: 'payment',
-    success_url: 'http://localhost:3001/success', // Redirect to success page
-    cancel_url: 'http://localhost:3001/cancel', // Redirect to cancel page
-  });
 
-  res.json({ url: session.url });
-});
+
+// app.post('/api/checkout/create-session', async (req, res) => {
+//   const { productName, amount } = req.body;
+
+//   console.log(productName, amount)
+
+//   const session = await stripe.checkout.sessions.create({
+//     payment_method_types: ['card'],
+//     line_items: [
+//       {
+//         price_data: {
+//           currency: 'usd',
+//           product_data: {
+//             name: productName,
+//           },
+//           unit_amount: amount, // Amount in cents
+//         },
+//         quantity: 1,
+//       },
+//     ],
+//     mode: 'payment',
+//     success_url: 'http://localhost:3000/success', // Redirect to success page
+//     cancel_url: 'http://localhost:3000/cancel', // Redirect to cancel page
+//   });
+
+//   res.json({ url: session.url });
+// });
 
 app.get('/product/:id', (req, res) => {
   // You can retrieve the product ID from req.params.id
