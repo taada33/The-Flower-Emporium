@@ -5,7 +5,7 @@
   
 ## Description
 
-This project is a demo of a flowershop e-commerce website. This website allows users to create accounts and fill their carts with orders, which they can checkout.
+This project is a demo of a flowershop e-commerce website. This website allows users to create accounts and fill their carts with orders, which they can then proceed to checkout.
 
 
 ## Table of Contents
