@@ -6,17 +6,17 @@ const quantity = document.querySelector('.quantity-input').value
 
 // const price =document.querySelector('.price')
 
-console.log(quantity)
+// console.log(quantity)
 
-const buttonCheckout = document.querySelector("#checkout")
-//  console.log(button)
+const buttonCheckout = document.querySelector("#checkout-btn")
+ console.log(buttonCheckout)
 
 buttonCheckout.addEventListener('click',(e)=>{
   e.preventDefault();
   
-  // console.log("hello")
+  console.log("hello")
 
-  fetch("/api/checkout/create-checkout-session", {
+  fetch("/checkout/create-session", {
     method: "POST",
     // mode: "no-cors",
   
@@ -41,9 +41,9 @@ buttonCheckout.addEventListener('click',(e)=>{
       // If there is an error then make sure we catch that
       // return res.json().then(e => Promise.reject(e))
     }).then(({ url }) => {
-      console.log(url)
+      // console.log(url)
       // On success redirect the customer to the returned URL
-      window.location=  url
+      window.location =  url
 
     
     })

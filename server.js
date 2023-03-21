@@ -14,9 +14,9 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors({
-  origin:"*"
-}));
+// app.use(cors({
+//   origin:"http://localhost:5500"
+// }));
 // app.options('*', cors());
 const sess = {
   secret: 'Super secret secret',
@@ -47,7 +47,98 @@ app.use(express.static(path.join(__dirname, 'public')));
 // turn on routes
 app.use(routes);
 
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+//   next();
+// });
 
+app.post('/create-checkout-session', async (req, res) => {
+  
+  // return res.send('hello')
+
+  const productData = req.body.items 
+
+  console.log(productData)
+  
+  try {
+   const session = await stripe.checkout.sessions.create({
+
+      payment_method_types: ['card'],
+
+      line_items: productData.map(item => {
+        return {
+          price_data: {
+            currency: 'cad',
+            product_data: {
+              name: item.name
+            },
+            unit_amount: item.price * 100 // Convert to cents
+          },
+          quantity: item.quantity,
+        };
+      }),
+      mode: 'payment',
+
+      success_url: `http://localhost:3000/checkout/success`,
+      cancel_url: `http://localhost:3000/checkout/cancel`,
+  })
+  //     success_url: `${req.protocol}://${req.get('host')}/checkout/success`,
+  //     cancel_url: `${req.protocol}://${req.get('host')}/checkout/cancel`
+  //   });
+
+    // Redirect the user to the Stripe Checkout page
+    res.redirect(303, session.url);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Server error');
+  }
+});
+
+
+  // return res.json('hello')
+  // const session = await stripe.checkout.sessions.create({
+  //     payment_method_types: ['card'],
+
+  //     line_items: cartItems.map(item => {
+  //       return {
+
+  // const lineItems = await Promise.all(
+  //   items.map(async (item) => {
+  //     const productData = await Products.findByPk(item.id, {
+  //       include: [{ model: Categories }],
+  //     });
+  //     return {
+  //       price_data: {
+  //         currency: 'usd',
+  //         product_data: {
+  //           name: productData.name,
+  //         },
+  //         unit_amount: productData.price * 100, // convert dollars to cents
+  //       },
+  //       quantity: item.quantity,
+  //     };
+  //   })
+  // );
+
+  // const session = await stripe.checkout.sessions.create({
+  //   payment_method_types: ['card'],
+  //   line_items: lineItems,
+  //   mode: 'payment',
+  //   success_url: 'http://localhost:3001/success',
+  //   cancel_url: 'http://localhost:3001/cancel',
+  // });
+
+//     res.redirect(303, session.url);
+//   });
+
+app.get('/success', (req, res) => {
+  res.render('success');
+  
+});
+
+app.get('/cancel', (req, res) => {
+  res.render('cancel');
+});
 
 
 // app.post('/api/checkout/create-session', async (req, res) => {
