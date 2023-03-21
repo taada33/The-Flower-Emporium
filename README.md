@@ -5,7 +5,7 @@
   
 ## Description
 
-This project is a demo of a flowershop e-commerce website. This website allows users to create accounts and fill their carts with orders, which they can then proceed to checkout.
+This project is a demo of a flowershop e-commerce website. This website allows users to create accounts and fill their carts with orders, which they can checkout.
 
 
 ## Table of Contents
@@ -19,7 +19,7 @@ This project is a demo of a flowershop e-commerce website. This website allows u
 
 ## Installation
 
-To host the server locally, first use the command npm i to install all required packages. Then seed the database by running npm run seed. To start the server, use command npm start. Alternatively, please visit the heroku website (https://flower-emporium.herokuapp.com/)[https://flower-emporium.herokuapp.com/] to view the application.
+To host the server locally, first use the command ```npm i``` to install all required packages. Then seed the database by running ```npm run seed```. To start the server, use command ```npm start```. Alternatively, please visit the heroku website (https://flower-emporium.herokuapp.com/)[https://flower-emporium.herokuapp.com/] to view the application.
 
 ## Usage
 
