@@ -45,5 +45,5 @@ There are no tests at this time.
 
 ## Questions
 
-The developers who worked on this project are Zhonghui Zhang ([Jennyzzhh](https://github.com/Jennyzzhh)), Thomas Adamson [https://github.com/taada33](taada33), Abenezer Mengesha [https://github.com/AbenezerTMengesha](AbenezerTMengesha), and Mohamed Abdullahi [https://github.com/MohamedAbdullahi2](MohamedAbdullahi2).
+The developers who worked on this project are Zhonghui Zhang ([Jennyzzhh](https://github.com/Jennyzzhh)), Thomas Adamson ([taada33](https://github.com/taada33)), Abenezer Mengesha ([AbenezerTMengesha](https://github.com/AbenezerTMengesha)), and Mohamed Abdullahi ([MohamedAbdullahi2](https://github.com/MohamedAbdullahi2)).
 
